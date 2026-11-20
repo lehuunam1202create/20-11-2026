@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Thiệp Tri Ân 20/11 — Kính Tặng Cô Lữ Nguyễn Thanh Hảo</title>
+
+  <!-- Google Fonts tiếng Việt chuẩn nét -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600;1,700&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            poetry: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            script: ['"Dancing Script"', 'cursive'],
+            sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            rubyvelvet: {
+              950: '#1a050d',
+              900: '#240712',
+              800: '#310a18',
+              700: '#3a0d1d',
+              600: '#54142b',
+            },
+            champagne: {
+              pearl: '#fff6d4',
+              bright: '#ffeaa8',
+              gold: '#f5d27a',
+              warm: '#d8a648',
+              rose: '#ffd6df',
+            },
+            crimson: {
+              500: '#e11d48',
+              400: '#fb7185',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* =====================================================================
+       1. LUMINOUS BRIGHT CHAMPAGNE-GOLD ON RUBY VELVET — 60-120FPS EDITION
+       - 0% backdrop-filter, 0% filter: blur/drop-shadow, 0% fixed bg
+       - Mọi animation CSS chỉ dùng transform: translate3d/scale/rotate & opacity
+       - Viền sáng vàng champagne ánh ngọc trai (#ffeaa8 / #fff6d4) + glow tĩnh
+    ===================================================================== */
+    :root {
+      --bg-ruby-velvet: radial-gradient(circle at 50% 16%, #3a0d1d 0%, #2a0815 44%, #1a050d 100%);
+      --gold-luminous: linear-gradient(
+        118deg,
+        #f2c96b 0%,
+        #fff6d4 28%,
+        #ffffff 48%,
+        #ffeaa8 68%,
+        #fff6d4 86%,
+        #e5b555 100%
+      );
+      --border-glow-static:
+        0 0 22px rgba(255, 236, 173, 0.32),
+        inset 0 0 18px rgba(255, 246, 212, 0.14);
+      --border-glow-strong:
+        0 0 26px rgba(255, 236, 173, 0.42),
+        inset 0 0 20px rgba(255, 246, 212, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: #1a050d;
+      background-image: var(--bg-ruby-velvet);
+      color: #fff8ef;
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Hậu cảnh ánh sáng nhung cố định (không animate, không gây repaint) */
+    .velvet-backdrop {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 56% 38% at 18% 12%, rgba(255, 234, 168, 0.10) 0%, transparent 66%),
+        radial-gradient(ellipse 52% 42% at 84% 20%, rgba(251, 113, 133, 0.11) 0%, transparent 68%),
+        radial-gradient(ellipse 64% 44% at 50% 94%, rgba(255, 246, 212, 0.08) 0%, transparent 72%);
+    }
+
+    /* Canvas hiệu ứng 60-120FPS khóa dpr = 1, vẽ từ 4 sprite 32x32 */
+    #fx-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    /* =====================================================================
+       2. CHỮ ÁNH KIM VÀNG SÁNG & HIỆU ỨNG TYPOGRAPHY THUẦN GPU
+    ===================================================================== */
+    .luminous-gold-text {
+      background: var(--gold-luminous);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Ngôi sao 4 cánh lấp lánh nhẹ quanh tên Cô (GPU: transform + opacity) */
+    .twinkle-star {
+      position: absolute;
+      pointer-events: none;
+      animation: starPulse 2.4s ease-in-out infinite;
+      will-change: transform, opacity;
+    }
+
+    body.lite-fx .twinkle-star {
+      animation: none;
+      opacity: 0.78;
+    }
+
+    @keyframes starPulse {
+      0%, 100% { opacity: 0.32; transform: translate3d(0, 0, 0) scale(0.72) rotate(0deg); }
+      50% { opacity: 1; transform: translate3d(0, 0, 0) scale(1.18) rotate(45deg); }
+    }
+
+    /* Con trỏ Typewriter cho câu đề từ */
+    .type-caret {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: #fff6d4;
+      margin-left: 4px;
+      vertical-align: -2px;
+      animation: caretBlink 0.85s step-end infinite;
+    }
+
+    .type-caret.is-done {
+      opacity: 0;
+      animation: none;
+    }
+
+    @keyframes caretBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Staggered Reveal các đoạn thư (thuần GPU) */
+    .reveal-step {
+      opacity: 0;
+      transform: translate3d(0, 16px, 0);
+      transition: opacity 0.68s cubic-bezier(0.22, 1, 0.36, 1), transform 0.68s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .main-stage.is-visible .reveal-step {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .step-1 { transition-delay: 0.12s; }
+    .step-2 { transition-delay: 0.30s; }
+    .step-3 { transition-delay: 0.48s; }
+    .step-4 { transition-delay: 0.66s; }
+    .step-5 { transition-delay: 0.84s; }
+    .step-6 { transition-delay: 1.02s; }
+
+    /* Drop Cap ánh kim sáng cổ điển */
+    .luminous-dropcap {
+      float: left;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 800;
+      font-size: 3.45rem;
+      line-height: 0.84;
+      padding: 8px 13px 8px 10px;
+      margin: 4px 14px 4px 0;
+      border-radius: 14px;
+      background: linear-gradient(155deg, #4b1227 0%, #240712 100%);
+      border: 1.5px solid #fff6d4;
+      box-shadow:
+        0 0 16px rgba(255, 236, 173, 0.35),
+        inset 0 0 12px rgba(255, 246, 212, 0.18);
+    }
+
+    .luminous-dropcap span {
+      display: block;
+      background: var(--gold-luminous);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* =====================================================================
+       3. HỆ THỐNG KHUNG VIỀN SÁNG RỰC RỠ (STATIC GLOW + DOUBLE BORDER)
+    ===================================================================== */
+    .luminous-card {
+      position: relative;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(114, 28, 58, 0.48) 0%, transparent 60%),
+        linear-gradient(160deg, #350b1a 0%, #1d060f 100%);
+      border: 1.75px solid #ffeaa8;
+      box-shadow: var(--border-glow-static);
+      overflow: hidden;
+      contain: layout style paint;
+    }
+
+    /* Viền kép sáng mảnh bên trong */
+    .luminous-double-rim {
+      position: absolute;
+      inset: 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 246, 212, 0.56);
+      pointer-events: none;
+    }
+
+    .luminous-double-rim::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 16px;
+      border: 1px dashed rgba(255, 234, 168, 0.28);
+    }
+
+    .luminous-pill {
+      background: linear-gradient(155deg, #441023 0%, #240712 100%);
+      border: 1.25px solid #ffeaa8;
+      box-shadow:
+        0 0 16px rgba(255, 236, 173, 0.28),
+        inset 0 0 10px rgba(255, 246, 212, 0.14);
+    }
+
+    /* =====================================================================
+       4. MÀN HÌNH MỞ ĐẦU: PHONG THƯ 3D VIỀN VÀNG SÁNG RỰC RỠ
+    ===================================================================== */
+    .intro-stage {
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .intro-stage.is-hidden {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scale(1.05);
+      pointer-events: none;
+    }
+
+    .envelope-scene {
+      position: relative;
+      width: min(384px, 90vw);
+      height: min(256px, 62vw);
+      perspective: 1200px;
+      cursor: pointer;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .envelope-scene:hover {
+      transform: translate3d(0, -6px, 0) scale(1.02);
+    }
+
+    .envelope-box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      background: linear-gradient(152deg, #56142c 0%, #270713 100%);
+      border: 2px solid #fff6d4;
+      box-shadow: var(--border-glow-strong);
+      transform-style: preserve-3d;
+    }
+
+    /* Ánh sáng lướt nhẹ mặt phong thư (chỉ transform) */
+    .envelope-sheen {
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .envelope-sheen::after {
+      content: '';
+      position: absolute;
+      top: -15%;
+      left: 0;
+      width: 42%;
+      height: 130%;
+      background: linear-gradient(105deg, transparent 0%, rgba(255, 246, 212, 0.24) 50%, transparent 100%);
+      transform: translate3d(-150%, 0, 0) skewX(-22deg);
+      animation: envelopeSweep 4.4s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    body.lite-fx .envelope-sheen::after {
+      animation: none;
+      opacity: 0;
+    }
+
+    @keyframes envelopeSweep {
+      0%, 18% { transform: translate3d(-150%, 0, 0) skewX(-22deg); }
+      58%, 100% { transform: translate3d(350%, 0, 0) skewX(-22deg); }
+    }
+
+    /* Tấm thiệp bên trong trượt lên khi mở nắp */
+    .envelope-slip {
+      position: absolute;
+      left: 7%;
+      right: 7%;
+      bottom: 8%;
+      height: 84%;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fffef9 0%, #fff0c6 100%);
+      border: 1.5px solid #e5b555;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 14px;
+      text-align: center;
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+      will-change: transform;
+    }
+
+    .envelope-scene.opened .envelope-slip {
+      transform: translate3d(0, -64%, 0);
+    }
+
+    .env-left {
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #621732 0%, #340a19 100%);
+      clip-path: polygon(0 0, 52% 52%, 0 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .env-right {
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: linear-gradient(225deg, #5a152e 0%, #2f0816 100%);
+      clip-path: polygon(100% 0, 48% 52%, 100% 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .env-bottom {
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: linear-gradient(0deg, #3c0c1d 0%, #6b1a36 92%);
+      clip-path: polygon(0 100%, 50% 44%, 100% 100%);
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .env-inner-trim {
+      position: absolute;
+      inset: 9px;
+      border-radius: 12px;
+      border: 1.25px solid rgba(255, 246, 212, 0.72);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .env-front-caption {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 6;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .env-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 56%;
+      background: linear-gradient(180deg, #781d3d 0%, #440e22 100%);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top center;
+      transform: rotateX(0deg);
+      transition: transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 7;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      will-change: transform;
+    }
+
+    .envelope-scene.opened .env-flap {
+      transform: rotateX(176deg);
+      z-index: 1;
+    }
+
+    /* Con dấu sáp phát sáng 20/11 (thuần GPU: transform + opacity) */
+    .wax-seal-wrap {
+      position: absolute;
+      top: 47%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      width: 92px;
+      height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      will-change: transform, opacity;
+    }
+
+    .envelope-scene.opened .wax-seal-wrap {
+      opacity: 0;
+      transform: translate3d(-50%, -50%, 0) scale(0.5);
+      pointer-events: none;
+    }
+
+    .wax-halo {
+      position: absolute;
+      inset: 3px;
+      border-radius: 9999px;
+      border: 2px solid #fff6d4;
+      animation: sealHaloPulse 2.1s ease-out infinite;
+      will-change: transform, opacity;
+    }
+
+    @keyframes sealHaloPulse {
+      0% { transform: scale(0.92); opacity: 0.9; }
+      100% { transform: scale(1.40); opacity: 0; }
+    }
+
+    .wax-core {
+      position: relative;
+      width: 74px;
+      height: 74px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 30% 24%, #ffffff 0%, #ffeaa8 28%, #c9264b 72%, #6d0e25 100%);
+      border: 2.5px solid #fff6d4;
+      box-shadow: 0 0 22px rgba(255, 246, 212, 0.52);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fffef6;
+      animation: sealBreathe 2.1s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    @keyframes sealBreathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+    }
+
+    /* =====================================================================
+       5. KHUNG THIỆP CHÍNH & 4 THẺ LẬT 3D "BỐN NGỌN NẾN TRI ÂN"
+    ===================================================================== */
+    .main-stage {
+      opacity: 0;
+      transform: translate3d(0, 18px, 0);
+      transition: opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1), transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .main-stage.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .candle-card-scene {
+      perspective: 1100px;
+      min-height: 236px;
+      cursor: pointer;
+      contain: layout style;
+    }
+
+    .candle-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 236px;
+      transform-style: preserve-3d;
+      transition: transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .candle-card-scene.is-flipped .candle-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    @media (hover: hover) {
+      .candle-card-scene:hover .candle-card-inner {
+        transform: translate3d(0, -4px, 0);
+      }
+      .candle-card-scene.is-flipped:hover .candle-card-inner {
+        transform: rotateY(180deg) translate3d(0, -4px, 0);
+      }
+    }
+
+    .candle-card-face {
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 22px 20px;
+      text-align: center;
+      overflow: hidden;
+      contain: layout style paint;
+    }
+
+    .candle-card-front {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(122, 30, 62, 0.45) 0%, transparent 64%),
+        linear-gradient(155deg, #3c0d1f 0%, #200610 100%);
+      border: 1.75px solid #ffeaa8;
+      box-shadow:
+        0 0 22px rgba(255, 236, 173, 0.32),
+        inset 0 0 18px rgba(255, 246, 212, 0.14),
+        inset 0 0 0 5px rgba(26, 5, 13, 0.55),
+        inset 0 0 0 6px rgba(255, 246, 212, 0.42);
+    }
+
+    .candle-card-back {
+      transform: rotateY(180deg);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 234, 168, 0.22) 0%, transparent 60%),
+        linear-gradient(150deg, #681734 0%, #3d0c1e 56%, #230611 100%);
+      border: 2px solid #fff6d4;
+      box-shadow:
+        0 0 24px rgba(255, 236, 173, 0.40),
+        inset 0 0 18px rgba(255, 246, 212, 0.20),
+        inset 0 0 0 5px rgba(26, 5, 13, 0.35),
+        inset 0 0 0 6px rgba(255, 246, 212, 0.52);
+    }
+
+    /* =====================================================================
+       6. CÁC NÚT VIỀN SÁNG NỔI BẬT, ĐĨA THAN VÀNG SÁNG & DOM POOL
+    ===================================================================== */
+    .btn-luminous-gold {
+      background: linear-gradient(112deg, #e7bc5d 0%, #ffeaa8 36%, #fff9e6 54%, #f5d27a 82%, #fff2c4 100%);
+      color: #280612;
+      border: 1.75px solid #fff6d4;
+      box-shadow:
+        0 0 22px rgba(255, 236, 173, 0.42),
+        inset 0 0 12px rgba(255, 255, 255, 0.45);
+      transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .btn-luminous-gold:hover {
+      transform: translate3d(0, -2px, 0) scale(1.03);
+    }
+
+    .btn-luminous-gold:active {
+      transform: scale(0.96);
+    }
+
+    .btn-ruby-luminous {
+      background: linear-gradient(152deg, #52132a 0%, #280714 100%);
+      color: #fff6d4;
+      border: 1.75px solid #ffeaa8;
+      box-shadow: var(--border-glow-static);
+      transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .btn-ruby-luminous:hover {
+      transform: translate3d(0, -2px, 0) scale(1.03);
+    }
+
+    .btn-ruby-luminous:active {
+      transform: scale(0.96);
+    }
+
+    /* Đĩa than vàng sáng xoay tròn (GPU: transform) */
+    .vinyl-disc {
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      background:
+        radial-gradient(circle at center, #420d21 0%, #420d21 17%, #fff6d4 19%, #e5b555 27%, #1c050e 29%, #320919 45%, #1c050e 60%, #3a0d1d 74%, #1c050e 85%, #ffeaa8 95%, #fff6d4 100%);
+      border: 1.5px solid #fff6d4;
+      animation: vinylSpin 7s linear infinite;
+      animation-play-state: paused;
+      will-change: transform;
+      flex-shrink: 0;
+    }
+
+    .vinyl-disc.is-spinning {
+      animation-play-state: running;
+    }
+
+    @keyframes vinylSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Visualizer 4 cột (GPU: scaleY) */
+    @keyframes eqBounce {
+      0%, 100% { transform: scaleY(0.26); }
+      50% { transform: scaleY(1); }
+    }
+
+    .eq-bar {
+      transform-origin: bottom center;
+      transform: scaleY(0.32);
+      will-change: transform;
+    }
+
+    .is-playing .eq-bar-1 { animation: eqBounce 0.70s ease-in-out infinite; }
+    .is-playing .eq-bar-2 { animation: eqBounce 0.54s ease-in-out 0.14s infinite; }
+    .is-playing .eq-bar-3 { animation: eqBounce 0.82s ease-in-out 0.28s infinite; }
+    .is-playing .eq-bar-4 { animation: eqBounce 0.62s ease-in-out 0.08s infinite; }
+
+    /* Nhịp tim dịu nhẹ */
+    @keyframes heartPulse {
+      0%, 100% { transform: scale(1); }
+      45% { transform: scale(1.16); }
+      72% { transform: scale(0.95); }
+    }
+    .gentle-pulse {
+      display: inline-block;
+      animation: heartPulse 1.8s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    /* Toast thông báo viền sáng */
+    .luminous-toast {
+      background: linear-gradient(150deg, #4d1127 0%, #220610 100%);
+      border: 1.5px solid #fff6d4;
+      box-shadow: var(--border-glow-strong);
+      transition: opacity 0.32s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .luminous-toast.toast-hide {
+      opacity: 0;
+      transform: translate3d(-50%, 16px, 0) scale(0.95);
+      pointer-events: none;
+    }
+
+    .luminous-toast.toast-show {
+      opacity: 1;
+      transform: translate3d(-50%, 0, 0) scale(1);
+    }
+
+    /* Pool 4 thẻ DOM cho câu chúc ngắn bay lên khi chạm màn hình */
+    .tap-wish-chip {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 35;
+      pointer-events: none;
+      white-space: nowrap;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff6d4;
+      padding: 2px 10px;
+      border-radius: 9999px;
+      background: rgba(42, 8, 21, 0.88);
+      border: 1px solid rgba(255, 234, 168, 0.72);
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    .tap-wish-chip.is-flying {
+      animation: wishRise 1.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes wishRise {
+      0% {
+        opacity: 0;
+        transform: translate3d(var(--wx), var(--wy), 0) translate3d(-50%, 8px, 0) scale(0.92);
+      }
+      18% {
+        opacity: 1;
+        transform: translate3d(var(--wx), var(--wy), 0) translate3d(-50%, -14px, 0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(var(--wx), var(--wy), 0) translate3d(-50%, -78px, 0) scale(1.03);
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-champagne-bright/30 selection:text-champagne-pearl">
+
+  <!-- Hậu cảnh nhung ruby cố định -->
+  <div class="velvet-backdrop" aria-hidden="true"></div>
+
+  <!-- Canvas Ultra-High FPS (khóa dpr = 1, 4 sprite 32x32, Object Pool) -->
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- ===================================================================
+       THANH TRẠNG THÁI GÓC TRÊN TRÁI: BỘ ĐO FPS TRỰC TIẾP & CHẾ ĐỘ HIỆU ỨNG
+  =================================================================== -->
+  <div
+    id="perf-hud"
+    class="fixed top-3 left-3 z-40 flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full luminous-pill text-[11px] sm:text-xs font-semibold text-champagne-pearl select-none"
+  >
+    <span id="fps-readout" class="inline-flex items-center gap-1 text-champagne-bright tabular-nums">
+      ⚡ 60 FPS
+    </span>
+    <span class="w-px h-3.5 bg-champagne-bright/45" aria-hidden="true"></span>
+    <button
+      id="fx-mode-btn"
+      type="button"
+      class="inline-flex items-center gap-1 text-champagne-pearl hover:text-white active:scale-95 transition-transform cursor-pointer px-1 py-0.5 rounded-full"
+      title="Chuyển chế độ hiệu ứng Bật / Siêu Nhẹ"
+    >
+      ✨ Hiệu ứng: Bật
+    </button>
+  </div>
+
+  <!-- ===================================================================
+       GIAI ĐOẠN 1: MÀN HÌNH MỞ ĐẦU — PHONG THƯ 3D VIỀN VÀNG SÁNG RỰC RỠ
+  =================================================================== -->
+  <section id="stage-intro" class="intro-stage fixed inset-0 z-30 flex flex-col items-center justify-center px-5 py-14 text-center">
+    <div class="max-w-lg w-full flex flex-col items-center">
+      <!-- Huy hiệu 20/11 viền sáng -->
+      <div class="luminous-pill inline-flex items-center gap-2.5 px-5 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase text-champagne-pearl mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-champagne-pearl"></span>
+        NGÀY NHÀ GIÁO VIỆT NAM 20/11
+        <span class="w-1.5 h-1.5 rounded-full bg-champagne-pearl"></span>
+      </div>
+
+      <p class="font-poetry italic text-lg sm:text-xl text-champagne-rose mb-1">
+        Trân Trọng Kính Gửi:
+      </p>
+
+      <h1 class="font-display font-extrabold text-3xl sm:text-4xl md:text-[42px] luminous-gold-text mb-2 leading-snug tracking-tight">
+        Cô Lữ Nguyễn Thanh Hảo
+      </h1>
+
+      <p class="text-xs sm:text-[13px] font-medium tracking-[0.16em] uppercase text-champagne-bright/90 mb-8">
+        Từ: Học trò Lê Hữu Nam
+      </p>
+
+      <!-- Phong thư nhung đỏ 3D viền vàng sáng rực rỡ -->
+      <div
+        id="envelope-trigger"
+        role="button"
+        tabindex="0"
+        aria-label="Chạm vào dấu sáp 20/11 để mở thiệp kính tặng Cô Lữ Nguyễn Thanh Hảo"
+        class="envelope-scene focus:outline-none"
+      >
+        <div class="envelope-box">
+          <!-- Tấm thiệp trượt lên khi mở nắp -->
+          <div class="envelope-slip">
+            <span class="text-[9.5px] font-bold tracking-[0.24em] uppercase text-rubyvelvet-700 mb-1">
+              NGÀY NHÀ GIÁO VIỆT NAM 20/11
+            </span>
+            <p class="font-script font-bold text-2xl sm:text-3xl text-rubyvelvet-700 leading-tight">
+              Tri Ân Ánh Sáng Dịu Dàng
+            </p>
+            <p class="font-poetry italic text-sm font-semibold text-rubyvelvet-600 mt-0.5">
+              Kính tặng Cô Lữ Nguyễn Thanh Hảo
+            </p>
+          </div>
+
+          <!-- Các mặt gấp nhung đỏ -->
+          <div class="env-left"></div>
+          <div class="env-right"></div>
+          <div class="env-bottom"></div>
+          <div class="env-inner-trim"></div>
+          <div class="envelope-sheen"></div>
+
+          <!-- Dòng chữ trên mặt phong thư -->
+          <div class="env-front-caption">
+            <p class="font-poetry italic font-semibold text-[14px] sm:text-[15.5px] text-champagne-pearl leading-tight">
+              Trân Trọng Kính Gửi: Cô Lữ Nguyễn Thanh Hảo
+            </p>
+            <p class="text-[10px] sm:text-[11px] tracking-[0.16em] uppercase text-champagne-bright/90 mt-0.5">
+              Từ: Học trò Lê Hữu Nam
+            </p>
+          </div>
+
+          <!-- Nắp phong thư 3D -->
+          <div class="env-flap"></div>
+
+          <!-- Con dấu sáp phát sáng in 20/11 -->
+          <div class="wax-seal-wrap">
+            <div class="wax-halo" aria-hidden="true"></div>
+            <div class="wax-core">
+              <svg class="w-3.5 h-3.5 mb-0.5 text-champagne-pearl fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              <span class="font-display font-extrabold text-[15px] leading-none tracking-wide">20/11</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dòng hướng dẫn -->
+      <p id="envelope-hint" class="mt-8 text-sm sm:text-base font-medium text-champagne-pearl/95 flex items-center justify-center gap-2 tracking-wide">
+        <span>Chạm vào dấu sáp 20/11 để mở thiệp &amp; thưởng thức hòa tấu</span>
+        <span class="text-champagne-bright text-lg">✨</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       GIAI ĐOẠN 2: KHÔNG GIAN THIỆP CHÍNH VIỀN SÁNG RỰC RỠ
+  =================================================================== -->
+  <main id="stage-main" class="main-stage hidden relative z-20 min-h-screen px-4 sm:px-6 pt-16 sm:pt-14 pb-32">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- 1. VƯƠNG MIỆN VÀNG ÁNH KIM SÁNG & TIÊU ĐỀ CHÍNH -->
+      <header class="text-center mb-10 sm:mb-12">
+        <div class="flex flex-col items-center justify-center mb-3">
+          <!-- Biểu tượng Vương miện & Nhánh nguyệt quế vàng sáng rực rỡ SVG -->
+          <svg class="w-40 sm:w-44 h-16" viewBox="0 0 180 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="brightCrownGold" x1="16" y1="6" x2="164" y2="62" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#f2c96b"/>
+                <stop offset="0.32" stop-color="#fff6d4"/>
+                <stop offset="0.52" stop-color="#ffffff"/>
+                <stop offset="0.74" stop-color="#ffeaa8"/>
+                <stop offset="1" stop-color="#e5b555"/>
+              </linearGradient>
+            </defs>
+            <!-- Vương miện thanh lịch -->
+            <path d="M68 38L63 18L78 27L90 11L102 27L117 18L112 38H68Z" fill="url(#brightCrownGold)" stroke="#fff6d4" stroke-width="1.2" stroke-linejoin="round"/>
+            <rect x="67" y="40" width="46" height="4.5" rx="2.2" fill="url(#brightCrownGold)"/>
+            <circle cx="90" cy="8.5" r="2.8" fill="#ffffff"/>
+            <circle cx="62" cy="15.5" r="2.2" fill="#fff6d4"/>
+            <circle cx="118" cy="15.5" r="2.2" fill="#fff6d4"/>
+            <circle cx="90" cy="30" r="3.2" fill="#e11d48" stroke="#fff6d4" stroke-width="1.1"/>
+            <!-- Nhánh nguyệt quế trái -->
+            <path d="M58 54C38 50 25 36 22 18" stroke="url(#brightCrownGold)" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M26 26C19 25 15 20 16 14C22 16 26 20 26 26Z" fill="url(#brightCrownGold)"/>
+            <path d="M32 37C24 38 19 34 19 28C26 29 31 32 32 37Z" fill="url(#brightCrownGold)"/>
+            <path d="M43 47C35 50 29 48 27 42C34 41 40 43 43 47Z" fill="url(#brightCrownGold)"/>
+            <path d="M34 29C36 22 41 18 47 19C45 25 40 29 34 29Z" fill="url(#brightCrownGold)" opacity="0.82"/>
+            <path d="M44 40C47 33 52 30 58 32C55 37 50 40 44 40Z" fill="url(#brightCrownGold)" opacity="0.82"/>
+            <!-- Nhánh nguyệt quế phải -->
+            <path d="M122 54C142 50 155 36 158 18" stroke="url(#brightCrownGold)" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M154 26C161 25 165 20 164 14C158 16 154 20 154 26Z" fill="url(#brightCrownGold)"/>
+            <path d="M148 37C156 38 161 34 161 28C154 29 149 32 148 37Z" fill="url(#brightCrownGold)"/>
+            <path d="M137 47C145 50 151 48 153 42C146 41 140 43 137 47Z" fill="url(#brightCrownGold)"/>
+            <path d="M146 29C144 22 139 18 133 19C135 25 140 29 146 29Z" fill="url(#brightCrownGold)" opacity="0.82"/>
+            <path d="M136 40C133 33 128 30 122 32C125 37 130 40 136 40Z" fill="url(#brightCrownGold)" opacity="0.82"/>
+            <!-- Kim cương nhỏ trung tâm -->
+            <path d="M84 55L90 50L96 55L90 60L84 55Z" fill="#fff6d4"/>
+          </svg>
+
+          <!-- Nhãn 20/11 viền sáng rực rỡ (không ghi năm) -->
+          <div class="luminous-pill inline-flex items-center gap-2.5 px-5 py-1.5 rounded-full mt-1">
+            <span class="text-crimson-400 text-xs">♥</span>
+            <span class="text-[11px] sm:text-xs font-bold tracking-[0.24em] uppercase text-champagne-pearl">
+              NGÀY NHÀ GIÁO VIỆT NAM 20/11
+            </span>
+            <span class="text-crimson-400 text-xs">♥</span>
+          </div>
+        </div>
+
+        <h2 class="font-display italic font-bold text-2xl sm:text-4xl luminous-gold-text tracking-tight mb-2 leading-snug">
+          Chúc Mừng Ngày Nhà Giáo Việt Nam
+        </h2>
+
+        <!-- Tên Cô Lữ Nguyễn Thanh Hảo nổi bật kèm 4 ngôi sao sáng lấp lánh -->
+        <div class="relative inline-block px-6 sm:px-10 py-2 my-1">
+          <svg class="twinkle-star w-5 h-5 -top-1 left-1" style="animation-delay: 0s;" viewBox="0 0 24 24" fill="#fff6d4" aria-hidden="true">
+            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/>
+          </svg>
+          <svg class="twinkle-star w-4 h-4 top-2 right-0" style="animation-delay: 0.75s;" viewBox="0 0 24 24" fill="#ffeaa8" aria-hidden="true">
+            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/>
+          </svg>
+          <svg class="twinkle-star w-3.5 h-3.5 bottom-1 left-6" style="animation-delay: 1.45s;" viewBox="0 0 24 24" fill="#ffd6df" aria-hidden="true">
+            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/>
+          </svg>
+          <svg class="twinkle-star w-4 h-4 -bottom-1 right-7" style="animation-delay: 0.35s;" viewBox="0 0 24 24" fill="#fff6d4" aria-hidden="true">
+            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/>
+          </svg>
+
+          <h1 class="font-script font-bold text-5xl sm:text-6xl md:text-[64px] luminous-gold-text leading-[1.18] py-1">
+            Cô Lữ Nguyễn Thanh Hảo
+          </h1>
+        </div>
+
+        <!-- Câu đề từ gõ chữ mượt -->
+        <div class="max-w-2xl mx-auto mt-3 px-2 min-h-[58px] flex items-center justify-center">
+          <p class="font-poetry italic text-lg sm:text-[21px] leading-relaxed text-champagne-pearl/95">
+            <span id="epigraph-text"></span><span id="epigraph-caret" class="type-caret"></span>
+          </p>
+        </div>
+
+        <!-- Thanh phân cách & biểu tượng trái tim vàng ánh kim sáng -->
+        <div class="flex items-center justify-center mt-4" aria-hidden="true">
+          <svg class="w-72 sm:w-80 h-9" viewBox="0 0 320 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 18H116" stroke="url(#lDivL)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M204 18H312" stroke="url(#lDivR)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M116 18C124 9 135 9 143 18C135 27 124 27 116 18Z" fill="rgba(255,234,168,0.26)" stroke="#fff2c4" stroke-width="1.35"/>
+            <path d="M204 18C196 9 185 9 177 18C185 27 196 27 204 18Z" fill="rgba(255,234,168,0.26)" stroke="#fff2c4" stroke-width="1.35"/>
+            <circle cx="131" cy="18" r="2.2" fill="#fff6d4"/>
+            <circle cx="189" cy="18" r="2.2" fill="#fff6d4"/>
+            <path d="M160 28C160 28 148.5 20.6 148.5 13.8C148.5 10.2 151.4 7.8 154.8 7.8C157.1 7.8 159 9.1 160 11C161 9.1 162.9 7.8 165.2 7.8C168.6 7.8 171.5 10.2 171.5 13.8C171.5 20.6 160 28 160 28Z" fill="#e11d48" stroke="#fff6d4" stroke-width="1.5"/>
+            <defs>
+              <linearGradient id="lDivL" x1="8" y1="18" x2="116" y2="18" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ffeaa8" stop-opacity="0"/>
+                <stop offset="1" stop-color="#fff6d4"/>
+              </linearGradient>
+              <linearGradient id="lDivR" x1="204" y1="18" x2="312" y2="18" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#fff6d4"/>
+                <stop offset="1" stop-color="#ffeaa8" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </header>
+
+      <!-- 2. KHUNG THIỆP CHÍNH VIỀN SÁNG RỰC RỠ + 4 GÓC HOA VĂN CỔ ĐIỂN #fff2c4 -->
+      <section class="mb-14" aria-labelledby="letter-heading">
+        <article class="luminous-card px-6 py-10 sm:px-14 sm:py-14">
+          <div class="luminous-double-rim" aria-hidden="true"></div>
+
+          <!-- 4 Góc Hoa Văn Cổ Điển SVG màu vàng sáng rực rỡ (#fff2c4) -->
+          <svg class="w-12 h-12 sm:w-16 sm:h-16 absolute top-4 left-4 pointer-events-none" style="color: #fff2c4;" viewBox="0 0 68 68" fill="none" aria-hidden="true">
+            <path d="M6 58V14C6 9.58 9.58 6 14 6H58" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 46V19C12 15.13 15.13 12 19 12H46" stroke="currentColor" stroke-width="1.15" stroke-opacity="0.78"/>
+            <path d="M6 28C15 28 21 22 21 13C21 22 27 28 36 28" stroke="currentColor" stroke-width="1.25" stroke-opacity="0.9"/>
+            <path d="M14 14L24 24" stroke="currentColor" stroke-width="1" stroke-opacity="0.68"/>
+            <circle cx="14" cy="14" r="2.6" fill="#ffffff"/>
+          </svg>
+          <svg class="w-12 h-12 sm:w-16 sm:h-16 absolute top-4 right-4 pointer-events-none scale-x-[-1]" style="color: #fff2c4;" viewBox="0 0 68 68" fill="none" aria-hidden="true">
+            <path d="M6 58V14C6 9.58 9.58 6 14 6H58" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 46V19C12 15.13 15.13 12 19 12H46" stroke="currentColor" stroke-width="1.15" stroke-opacity="0.78"/>
+            <path d="M6 28C15 28 21 22 21 13C21 22 27 28 36 28" stroke="currentColor" stroke-width="1.25" stroke-opacity="0.9"/>
+            <path d="M14 14L24 24" stroke="currentColor" stroke-width="1" stroke-opacity="0.68"/>
+            <circle cx="14" cy="14" r="2.6" fill="#ffffff"/>
+          </svg>
+          <svg class="w-12 h-12 sm:w-16 sm:h-16 absolute bottom-4 left-4 pointer-events-none scale-y-[-1]" style="color: #fff2c4;" viewBox="0 0 68 68" fill="none" aria-hidden="true">
+            <path d="M6 58V14C6 9.58 9.58 6 14 6H58" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 46V19C12 15.13 15.13 12 19 12H46" stroke="currentColor" stroke-width="1.15" stroke-opacity="0.78"/>
+            <path d="M6 28C15 28 21 22 21 13C21 22 27 28 36 28" stroke="currentColor" stroke-width="1.25" stroke-opacity="0.9"/>
+            <path d="M14 14L24 24" stroke="currentColor" stroke-width="1" stroke-opacity="0.68"/>
+            <circle cx="14" cy="14" r="2.6" fill="#ffffff"/>
+          </svg>
+          <svg class="w-12 h-12 sm:w-16 sm:h-16 absolute bottom-4 right-4 pointer-events-none scale-x-[-1] scale-y-[-1]" style="color: #fff2c4;" viewBox="0 0 68 68" fill="none" aria-hidden="true">
+            <path d="M6 58V14C6 9.58 9.58 6 14 6H58" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 46V19C12 15.13 15.13 12 19 12H46" stroke="currentColor" stroke-width="1.15" stroke-opacity="0.78"/>
+            <path d="M6 28C15 28 21 22 21 13C21 22 27 28 36 28" stroke="currentColor" stroke-width="1.25" stroke-opacity="0.9"/>
+            <path d="M14 14L24 24" stroke="currentColor" stroke-width="1" stroke-opacity="0.68"/>
+            <circle cx="14" cy="14" r="2.6" fill="#ffffff"/>
+          </svg>
+
+          <!-- Tiêu đề bức thư -->
+          <div class="text-center mb-8 reveal-step step-1">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-champagne-bright mb-2">
+              Gửi Trọn Lòng Biết Ơn
+            </p>
+            <h3 id="letter-heading" class="font-display italic font-bold text-3xl sm:text-4xl luminous-gold-text">
+              Lời Tri Ân Ngày 20/11
+            </h3>
+          </div>
+
+          <!-- Nội dung lá thư mới 100% kính tặng Cô Lữ Nguyễn Thanh Hảo -->
+          <div class="font-poetry text-[19.5px] sm:text-[21.5px] leading-[1.86] text-[#fff6ec] space-y-5">
+            <p class="reveal-step step-2 font-semibold italic text-champagne-pearl text-[22px] sm:text-[24px]">
+              Cô Thanh Hảo kính mến,
+            </p>
+
+            <p class="reveal-step step-3 clearfix">
+              <span class="luminous-dropcap" aria-hidden="true"><span>G</span></span>iữa biết bao hành trình lớn khôn của tuổi học trò, thật may mắn khi em được lắng nghe những bài giảng tận tâm và sự dìu dắt dịu dàng từ Cô. Không chỉ truyền trao tri thức bằng cả trái tim, Cô còn dạy chúng em biết cách kiên trì, sống tử tế và luôn giữ niềm tin vào giá trị của chính mình.
+            </p>
+
+            <p class="reveal-step step-4">
+              Nhân Ngày Nhà Giáo Việt Nam 20/11, em xin gửi đến Cô tấm lòng tri ân sâu sắc cùng những lời chúc chân thành nhất. Cảm ơn Cô đã luôn bao dung, kiên nhẫn lắng nghe và thắp lên ngọn lửa đam mê học tập trong mỗi giờ lên lớp.
+            </p>
+
+            <p class="reveal-step step-5">
+              Kính chúc Cô Lữ Nguyễn Thanh Hảo luôn dồi dào sức khỏe, tâm hồn luôn an nhiên, nụ cười mãi rạng rỡ và đón nhận thật nhiều niềm vui, hạnh phúc trọn vẹn bên gia đình cùng sự nghiệp trồng người cao quý.
+            </p>
+          </div>
+
+          <!-- Chữ ký trang trọng -->
+          <div class="reveal-step step-6 mt-10 pt-7 border-t border-champagne-bright/45 flex flex-col items-end text-right">
+            <p class="font-poetry italic text-lg sm:text-xl text-champagne-rose">
+              Trân trọng &amp; Kính mến,
+            </p>
+            <p class="font-script font-bold text-4xl sm:text-[42px] luminous-gold-text mt-1 pr-1 leading-tight">
+              Học trò Lê Hữu Nam
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <!-- 3. BỐN THẺ QUÀ TẶNG LẬT 3D ("BỐN NGỌN NẾN TRI ÂN") -->
+      <section class="mb-14" aria-labelledby="candles-heading">
+        <div class="text-center mb-8">
+          <span class="text-[11px] font-semibold uppercase tracking-[0.26em] text-champagne-bright">
+            Gửi Trao Những Lời Chúc Trọn Vẹn
+          </span>
+          <h3 id="candles-heading" class="font-display italic font-bold text-3xl sm:text-4xl luminous-gold-text mt-1.5">
+            Bốn Ngọn Nến Tri Ân
+          </h3>
+          <p class="text-xs sm:text-sm text-champagne-pearl/85 mt-2">
+            Chạm vào từng tấm thẻ viền vàng sáng để mở lời chúc — Lật đủ 4/4 thẻ sẽ bừng sáng pháo hoa tri ân đặc biệt ✨
+          </p>
+          <div class="mt-3 luminous-pill inline-flex items-center gap-2 px-4 py-1 rounded-full text-xs text-champagne-bright">
+            <span>Đã thắp sáng:</span>
+            <strong id="opened-cards-count" class="text-champagne-pearl">0 / 4</strong>
+            <span>ngọn nến tri ân</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <!-- Thẻ 1: An Nhiên & Sức Khỏe -->
+          <div class="candle-card-scene" data-card-id="1" role="button" tabindex="0" aria-pressed="false">
+            <div class="candle-card-inner">
+              <div class="candle-card-face candle-card-front">
+                <div class="w-14 h-14 rounded-2xl bg-[#4d1228] border border-champagne-pearl flex items-center justify-center text-3xl mb-3 shadow-[0_0_16px_rgba(255,236,173,0.3)]">
+                  🕊️
+                </div>
+                <span class="text-[10px] font-semibold uppercase tracking-[0.24em] text-champagne-rose mb-1">
+                  Ngọn Nến Thứ Nhất
+                </span>
+                <h4 class="font-display font-bold text-xl sm:text-2xl luminous-gold-text mb-2">
+                  An Nhiên &amp; Sức Khỏe
+                </h4>
+                <span class="mt-2 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-champagne-bright/15 border border-champagne-pearl/70 text-[11px] font-semibold tracking-widest uppercase text-champagne-pearl">
+                  Chạm Để Mở ✦
+                </span>
+              </div>
+              <div class="candle-card-face candle-card-back">
+                <span class="text-2xl mb-2">🕊️✨</span>
+                <h4 class="font-display italic font-bold text-xl luminous-gold-text mb-2">
+                  An Nhiên &amp; Sức Khỏe
+                </h4>
+                <p class="font-poetry text-[18.5px] leading-relaxed text-[#fff8ef]">
+                  Chúc Cô mỗi ngày mới đều tràn đầy năng lượng tích cực, thân tâm an lạc và luôn bình an trước mọi bộn bề.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thẻ 2: Tâm Sáng & Nhiệt Huyết -->
+          <div class="candle-card-scene" data-card-id="2" role="button" tabindex="0" aria-pressed="false">
+            <div class="candle-card-inner">
+              <div class="candle-card-face candle-card-front">
+                <div class="w-14 h-14 rounded-2xl bg-[#4d1228] border border-champagne-pearl flex items-center justify-center text-3xl mb-3 shadow-[0_0_16px_rgba(255,236,173,0.3)]">
+                  🕯️
+                </div>
+                <span class="text-[10px] font-semibold uppercase tracking-[0.24em] text-champagne-rose mb-1">
+                  Ngọn Nến Thứ Hai
+                </span>
+                <h4 class="font-display font-bold text-xl sm:text-2xl luminous-gold-text mb-2">
+                  Tâm Sáng &amp; Nhiệt Huyết
+                </h4>
+                <span class="mt-2 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-champagne-bright/15 border border-champagne-pearl/70 text-[11px] font-semibold tracking-widest uppercase text-champagne-pearl">
+                  Chạm Để Mở ✦
+                </span>
+              </div>
+              <div class="candle-card-face candle-card-back">
+                <span class="text-2xl mb-2">🕯️💛</span>
+                <h4 class="font-display italic font-bold text-xl luminous-gold-text mb-2">
+                  Tâm Sáng &amp; Nhiệt Huyết
+                </h4>
+                <p class="font-poetry text-[18.5px] leading-relaxed text-[#fff8ef]">
+                  Chúc ngọn lửa yêu nghề trong Cô luôn ấm áp, để mỗi tiết học đều mang đến niềm vui và nguồn cảm hứng dịu dàng.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thẻ 3: Rạng Rỡ & Thanh Lịch -->
+          <div class="candle-card-scene" data-card-id="3" role="button" tabindex="0" aria-pressed="false">
+            <div class="candle-card-inner">
+              <div class="candle-card-face candle-card-front">
+                <div class="w-14 h-14 rounded-2xl bg-[#4d1228] border border-champagne-pearl flex items-center justify-center text-3xl mb-3 shadow-[0_0_16px_rgba(255,236,173,0.3)]">
+                  🌸
+                </div>
+                <span class="text-[10px] font-semibold uppercase tracking-[0.24em] text-champagne-rose mb-1">
+                  Ngọn Nến Thứ Ba
+                </span>
+                <h4 class="font-display font-bold text-xl sm:text-2xl luminous-gold-text mb-2">
+                  Rạng Rỡ &amp; Thanh Lịch
+                </h4>
+                <span class="mt-2 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-champagne-bright/15 border border-champagne-pearl/70 text-[11px] font-semibold tracking-widest uppercase text-champagne-pearl">
+                  Chạm Để Mở ✦
+                </span>
+              </div>
+              <div class="candle-card-face candle-card-back">
+                <span class="text-2xl mb-2">🌸✨</span>
+                <h4 class="font-display italic font-bold text-xl luminous-gold-text mb-2">
+                  Rạng Rỡ &amp; Thanh Lịch
+                </h4>
+                <p class="font-poetry text-[18.5px] leading-relaxed text-[#fff8ef]">
+                  Chúc Cô luôn giữ mãi nét duyên dáng, trẻ trung, ánh mắt hiền hòa và nụ cười tươi tắn theo năm tháng.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thẻ 4: Hạnh Phúc Viên Mãn -->
+          <div class="candle-card-scene" data-card-id="4" role="button" tabindex="0" aria-pressed="false">
+            <div class="candle-card-inner">
+              <div class="candle-card-face candle-card-front">
+                <div class="w-14 h-14 rounded-2xl bg-[#4d1228] border border-champagne-pearl flex items-center justify-center text-3xl mb-3 shadow-[0_0_16px_rgba(255,236,173,0.3)]">
+                  👑
+                </div>
+                <span class="text-[10px] font-semibold uppercase tracking-[0.24em] text-champagne-rose mb-1">
+                  Ngọn Nến Thứ Tư
+                </span>
+                <h4 class="font-display font-bold text-xl sm:text-2xl luminous-gold-text mb-2">
+                  Hạnh Phúc Viên Mãn
+                </h4>
+                <span class="mt-2 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-champagne-bright/15 border border-champagne-pearl/70 text-[11px] font-semibold tracking-widest uppercase text-champagne-pearl">
+                  Chạm Để Mở ✦
+                </span>
+              </div>
+              <div class="candle-card-face candle-card-back">
+                <span class="text-2xl mb-2">👑💖</span>
+                <h4 class="font-display italic font-bold text-xl luminous-gold-text mb-2">
+                  Hạnh Phúc Viên Mãn
+                </h4>
+                <p class="font-poetry text-[18.5px] leading-relaxed text-[#fff8ef]">
+                  Chúc mọi điều may mắn, yêu thương và trọn vẹn nhất luôn mỉm cười với Cô cùng những người thân yêu.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. KHU VỰC TƯƠNG TÁC & 3 NÚT HÀNH ĐỘNG VIỀN SÁNG NỔI BẬT -->
+      <section class="luminous-card px-6 py-9 sm:px-10 text-center mb-12">
+        <p class="font-poetry italic text-xl sm:text-2xl luminous-gold-text font-semibold mb-6">
+          Gửi ánh pháo hoa trái tim rực rỡ &amp; ngàn đóa hoa tươi kính tặng Cô Lữ Nguyễn Thanh Hảo
+        </p>
+
+        <div class="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3.5">
+          <button
+            id="firework-heart-btn"
+            type="button"
+            class="btn-luminous-gold w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm sm:text-[15px] tracking-wide cursor-pointer select-none"
+          >
+            <span>✨ Pháo Hoa Trái Tim</span>
+            <span class="gentle-pulse">❤️</span>
+          </button>
+
+          <button
+            id="gift-flowers-btn"
+            type="button"
+            class="btn-ruby-luminous w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm sm:text-[15px] tracking-wide cursor-pointer select-none"
+          >
+            <span>💐 Gửi Ngàn Đóa Hoa</span>
+          </button>
+
+          <button
+            id="replay-envelope-btn"
+            type="button"
+            class="btn-ruby-luminous w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-semibold text-sm sm:text-[15px] tracking-wide cursor-pointer select-none"
+          >
+            <span>✉️ Xem Lại Phong Thư</span>
+          </button>
+        </div>
+
+        <!-- Bộ đếm hoa & trái tim đã gửi -->
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-xs sm:text-sm">
+          <div class="luminous-pill inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-champagne-bright">
+            <span>💐 Đóa hoa đã gửi:</span>
+            <strong id="flower-count" class="text-champagne-pearl font-bold">0</strong>
+          </div>
+          <div class="luminous-pill inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-champagne-rose">
+            <span>❤️ Trái tim đã gửi:</span>
+            <strong id="heart-count" class="text-champagne-pearl font-bold">0</strong>
+          </div>
+        </div>
+
+        <p class="mt-4 text-[11.5px] text-champagne-bright/75">
+          (Chạm bất kỳ đâu trên màn hình để bung trái tim sáng &amp; lời chúc dành tặng Cô Thanh Hảo ✨)
+        </p>
+      </section>
+
+      <!-- 5. CHÂN TRANG SANG TRỌNG (KHÔNG GHI NĂM HỌC HAY TÊN LỚP) -->
+      <footer class="text-center pt-5 pb-4 border-t border-champagne-bright/35">
+        <p class="font-poetry italic text-lg sm:text-xl text-champagne-pearl">
+          Kính chúc Cô Lữ Nguyễn Thanh Hảo một Ngày Nhà Giáo Việt Nam 20/11 thật rạng rỡ &amp; ngập tràn yêu thương
+        </p>
+        <p class="text-xs text-champagne-bright/80 mt-1.5 tracking-wider">
+          Trân trọng kính tặng — Học trò Lê Hữu Nam
+        </p>
+      </footer>
+    </div>
+  </main>
+
+  <!-- Toast Thông Báo Viền Sáng -->
+  <div
+    id="luminous-toast"
+    role="status"
+    aria-live="polite"
+    class="luminous-toast toast-hide fixed bottom-24 left-1/2 z-40 max-w-[92vw] px-5 py-3 rounded-full text-champagne-pearl text-xs sm:text-sm font-medium text-center"
+  >
+    Kính chúc Cô Lữ Nguyễn Thanh Hảo một ngày 20/11 ngập tràn hạnh phúc! ✨
+  </div>
+
+  <!-- ===================================================================
+       TRÌNH PHÁT NHẠC ĐĨA THAN VÀNG SÁNG NỔI (100% WEB AUDIO API)
+  =================================================================== -->
+  <aside
+    id="vinyl-player"
+    aria-label="Trình phát nhạc hòa tấu tri ân"
+    class="fixed bottom-4 right-4 z-40 flex items-center gap-2.5 sm:gap-3 pl-2 pr-2.5 sm:pr-3 py-2 rounded-full bg-[#2b0816] border-[1.75px] border-champagne-bright shadow-[0_0_22px_rgba(255,236,173,0.34),inset_0_0_14px_rgba(255,246,212,0.14)] max-w-[calc(100vw-2rem)]"
+  >
+    <div id="vinyl-disc" class="vinyl-disc" aria-hidden="true"></div>
+
+    <div class="min-w-0 flex flex-col pr-0.5">
+      <div class="flex items-center gap-2">
+        <div class="flex items-end gap-[2.5px] h-3 shrink-0" aria-hidden="true">
+          <span class="eq-bar eq-bar-1 w-[2.5px] h-full rounded-full bg-champagne-pearl"></span>
+          <span class="eq-bar eq-bar-2 w-[2.5px] h-full rounded-full bg-crimson-400"></span>
+          <span class="eq-bar eq-bar-3 w-[2.5px] h-full rounded-full bg-champagne-bright"></span>
+          <span class="eq-bar eq-bar-4 w-[2.5px] h-full rounded-full bg-champagne-rose"></span>
+        </div>
+        <span id="player-status" class="text-[9.5px] sm:text-[10px] uppercase tracking-[0.16em] text-champagne-bright font-semibold">
+          Hòa Tấu 20/11
+        </span>
+      </div>
+      <p id="track-title" class="text-[11.5px] sm:text-xs font-semibold text-champagne-pearl truncate max-w-[144px] sm:max-w-[210px] mt-0.5">
+        Khúc Hát Tri Ân — Piano &amp; Chuông Pha Lê
+      </p>
+    </div>
+
+    <div class="flex items-center gap-1.5 shrink-0">
+      <button
+        id="play-pause-btn"
+        type="button"
+        aria-label="Bật hoặc tắt nhạc nền"
+        class="w-9 h-9 rounded-full bg-gradient-to-br from-champagne-pearl to-champagne-warm text-rubyvelvet-950 border border-champagne-pearl flex items-center justify-center active:scale-95 transition-transform cursor-pointer"
+        title="Bật / Tắt nhạc"
+      >
+        <svg id="icon-play" class="w-4 h-4 ml-0.5 fill-current" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg id="icon-pause" class="w-4 h-4 fill-current hidden" viewBox="0 0 24 24">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </button>
+
+      <button
+        id="switch-track-btn"
+        type="button"
+        aria-label="Chuyển bản nhạc"
+        class="w-9 h-9 rounded-full bg-[#451024] hover:bg-[#5b1630] text-champagne-pearl border border-champagne-bright flex items-center justify-center active:scale-95 transition-transform cursor-pointer"
+        title="Chuyển bài"
+      >
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+          <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ===================================================================
+       JAVASCRIPT ENGINE 60-120FPS TUYỆT ĐỐI KHÔNG LAG:
+       1) Web Audio API Lightweight Stereo Delay (2 bản hòa tấu mới)
+       2) 4 Offscreen Sprites 32x32px (0% shadowBlur)
+       3) Canvas khóa dpr = 1, desynchronized: true
+       4) Object Pooling cố định (22 hạt nền + 60 hạt pháo hoa) & Pool 4 DOM
+       5) Delta-Time chuẩn hóa, Auto Pause khi tab ẩn, Bộ đo FPS trực tiếp
+  =================================================================== -->
+  <script>
+    (() => {
+      'use strict';
+
+      /* =================================================================
+         1. HỆ THỐNG NHẠC HÒA TẤU WEB AUDIO API + STEREO DELAY SIÊU NHẸ
+            - 2 bản nhạc mới dịu êm:
+              1. Khúc Hát Tri Ân — Piano & Chuông Pha Lê
+              2. Giai Điệu Bình Yên — Hộp Nhạc Mùa Thu
+      ================================================================= */
+      const MelodyEngine = (() => {
+        let ctx = null;
+        let masterGain = null;
+        let dryBus = null;
+        let delayL = null;
+        let delayR = null;
+        let isPlaying = false;
+        let trackIdx = 0;
+        let stepIdx = 0;
+        let timer = null;
+
+        const TRACKS = [
+          {
+            name: 'Khúc Hát Tri Ân — Piano & Chuông Pha Lê',
+            stepMs: 480,
+            // Hợp âm F major — C major — Dm — Am — Bb — F — Gm — C7 ấm áp, sâu lắng
+            steps: [
+              // F major
+              { pad: [174.61, 220.00, 261.63], piano: [523.25, 349.23], bell: 1046.50 },
+              { piano: [587.33, 440.00] },
+              { piano: [659.25, 349.23] },
+              { piano: [698.46, 523.25] },
+              // C major
+              { pad: [130.81, 196.00, 261.63], piano: [659.25, 329.63], bell: 1318.51 },
+              { piano: [587.33, 392.00] },
+              { piano: [523.25, 329.63] },
+              { piano: [587.33, 392.00] },
+              // Dm
+              { pad: [146.83, 220.00, 293.66], piano: [587.33, 293.66], bell: 1174.66 },
+              { piano: [523.25, 349.23] },
+              { piano: [440.00, 293.66] },
+              { piano: [523.25, 440.00] },
+              // Am
+              { pad: [110.00, 164.81, 261.63], piano: [523.25, 261.63], bell: 1046.50 },
+              { piano: [493.88, 329.63] },
+              { piano: [440.00, 261.63] },
+              { piano: [523.25, 329.63] },
+              // Bb major
+              { pad: [116.54, 174.61, 233.08], piano: [466.16, 233.08], bell: 932.33 },
+              { piano: [523.25, 349.23] },
+              { piano: [587.33, 293.66] },
+              { piano: [698.46, 466.16] },
+              // F major
+              { pad: [174.61, 220.00, 349.23], piano: [659.25, 349.23], bell: 1396.91 },
+              { piano: [587.33, 440.00] },
+              { piano: [523.25, 349.23] },
+              { piano: [440.00, 261.63] },
+              // Gm7 -> C7
+              { pad: [196.00, 233.08, 293.66], piano: [587.33, 293.66], bell: 1174.66 },
+              { piano: [659.25, 392.00] },
+              { pad: [130.81, 196.00, 233.08], piano: [523.25, 329.63] },
+              { piano: [698.46, 523.25], bell: 1396.91 }
+            ]
+          },
+          {
+            name: 'Giai Điệu Bình Yên — Hộp Nhạc Mùa Thu',
+            stepMs: 440,
+            // Hợp âm G major — Em — Cmaj7 — D7 thanh thoát như hộp nhạc pha lê
+            steps: [
+              // G major
+              { pad: [196.00, 246.94, 293.66], piano: [783.99, 392.00], bell: 1567.98 },
+              { piano: [739.99, 493.88] },
+              { piano: [587.33, 392.00] },
+              { piano: [659.25, 493.88] },
+              // Em7
+              { pad: [164.81, 196.00, 246.94], piano: [587.33, 329.63], bell: 1174.66 },
+              { piano: [493.88, 392.00] },
+              { piano: [587.33, 329.63] },
+              { piano: [659.25, 493.88] },
+              // Cmaj7
+              { pad: [130.81, 196.00, 246.94], piano: [659.25, 329.63], bell: 1318.51 },
+              { piano: [587.33, 392.00] },
+              { piano: [523.25, 329.63] },
+              { piano: [493.88, 392.00] },
+              // D major
+              { pad: [146.83, 220.00, 293.66], piano: [587.33, 293.66], bell: 1479.98 },
+              { piano: [659.25, 369.99] },
+              { piano: [739.99, 440.00] },
+              { piano: [587.33, 369.99] },
+              // G major reprise
+              { pad: [196.00, 246.94, 392.00], piano: [783.99, 392.00], bell: 1567.98 },
+              { piano: [659.25, 493.88] },
+              { piano: [587.33, 392.00] },
+              { piano: [493.88, 293.66] },
+              // C -> D -> G
+              { pad: [130.81, 196.00, 329.63], piano: [523.25, 329.63], bell: 1046.50 },
+              { piano: [587.33, 369.99] },
+              { piano: [659.25, 440.00] },
+              { piano: [783.99, 493.88], bell: 1567.98 }
+            ]
+          }
+        ];
+
+        function ensureContext() {
+          if (!ctx) {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return false;
+            ctx = new AudioCtx();
+
+            masterGain = ctx.createGain();
+            masterGain.gain.value = 0.40;
+
+            dryBus = ctx.createGain();
+            dryBus.gain.value = 0.78;
+
+            // Stereo Delay nhẹ thay ConvolverNode -> không gây nghẽn âm thanh hay giật FPS
+            delayL = ctx.createDelay(0.5);
+            delayR = ctx.createDelay(0.5);
+            delayL.delayTime.value = 0.23;
+            delayR.delayTime.value = 0.34;
+
+            const dampL = ctx.createBiquadFilter();
+            const dampR = ctx.createBiquadFilter();
+            dampL.type = 'lowpass';
+            dampR.type = 'lowpass';
+            dampL.frequency.value = 1750;
+            dampR.frequency.value = 1600;
+
+            const fbL = ctx.createGain();
+            const fbR = ctx.createGain();
+            fbL.gain.value = 0.28;
+            fbR.gain.value = 0.26;
+
+            const wetBus = ctx.createGain();
+            wetBus.gain.value = 0.32;
+
+            delayL.connect(dampL);
+            dampL.connect(fbL);
+            fbL.connect(delayR);
+
+            delayR.connect(dampR);
+            dampR.connect(fbR);
+            fbR.connect(delayL);
+
+            if (typeof ctx.createStereoPanner === 'function') {
+              const panL = ctx.createStereoPanner();
+              const panR = ctx.createStereoPanner();
+              panL.pan.value = -0.42;
+              panR.pan.value = 0.42;
+              dampL.connect(panL);
+              dampR.connect(panR);
+              panL.connect(wetBus);
+              panR.connect(wetBus);
+            } else {
+              dampL.connect(wetBus);
+              dampR.connect(wetBus);
+            }
+
+            dryBus.connect(masterGain);
+            wetBus.connect(masterGain);
+            masterGain.connect(ctx.destination);
+          }
+
+          if (ctx.state === 'suspended') {
+            ctx.resume().catch(() => {});
+          }
+          return true;
+        }
+
+        function playPiano(freq, volume = 0.135, dur = 1.85) {
+          if (!ctx || !freq) return;
+          const now = ctx.currentTime;
+          const gain = ctx.createGain();
+          const filter = ctx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(Math.min(3200, freq * 4.2), now);
+          filter.frequency.exponentialRampToValueAtTime(Math.max(480, freq * 1.4), now + dur * 0.85);
+
+          gain.gain.setValueAtTime(0.0001, now);
+          gain.gain.linearRampToValueAtTime(volume, now + 0.015);
+          gain.gain.exponentialRampToValueAtTime(volume * 0.36, now + 0.30);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+
+          const osc1 = ctx.createOscillator();
+          const osc2 = ctx.createOscillator();
+          const g2 = ctx.createGain();
+          osc1.type = 'triangle';
+          osc1.frequency.setValueAtTime(freq, now);
+          osc2.type = 'sine';
+          osc2.frequency.setValueAtTime(freq * 2, now);
+          g2.gain.value = 0.20;
+
+          osc1.connect(filter);
+          osc2.connect(g2);
+          g2.connect(filter);
+          filter.connect(gain);
+
+          gain.connect(dryBus);
+          gain.connect(delayL);
+
+          osc1.start(now);
+          osc2.start(now);
+          osc1.stop(now + dur + 0.04);
+          osc2.stop(now + dur + 0.04);
+        }
+
+        function playStrings(freqs, dur = 2.0, volume = 0.042) {
+          if (!ctx || !freqs) return;
+          const now = ctx.currentTime;
+          const lp = ctx.createBiquadFilter();
+          lp.type = 'lowpass';
+          lp.frequency.value = 840;
+
+          const g = ctx.createGain();
+          g.gain.setValueAtTime(0.0001, now);
+          g.gain.linearRampToValueAtTime(volume, now + 0.48);
+          g.gain.setValueAtTime(volume * 0.88, now + dur * 0.65);
+          g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+
+          for (let i = 0; i < freqs.length; i++) {
+            const osc = ctx.createOscillator();
+            osc.type = i === 0 ? 'triangle' : 'sine';
+            osc.frequency.setValueAtTime(freqs[i], now);
+            osc.connect(lp);
+            osc.start(now);
+            osc.stop(now + dur + 0.05);
+          }
+
+          lp.connect(g);
+          g.connect(dryBus);
+          g.connect(delayR);
+        }
+
+        function playBell(freq, volume = 0.062, dur = 1.55) {
+          if (!ctx || !freq) return;
+          const now = ctx.currentTime;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now);
+
+          gain.gain.setValueAtTime(0.0001, now);
+          gain.gain.linearRampToValueAtTime(volume, now + 0.01);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+
+          osc.connect(gain);
+          gain.connect(dryBus);
+          gain.connect(delayR);
+
+          osc.start(now);
+          osc.stop(now + dur + 0.04);
+        }
+
+        function playSparkleChime(grand = false) {
+          if (!ensureContext()) return;
+          const notes = grand
+            ? [523.25, 659.25, 783.99, 1046.50, 1318.51]
+            : [523.25, 659.25, 783.99, 1046.50];
+          notes.forEach((f, idx) => {
+            setTimeout(() => playBell(f, grand ? 0.085 : 0.066, 1.4), idx * 75);
+          });
+        }
+
+        function tick() {
+          if (!isPlaying) return;
+          const track = TRACKS[trackIdx];
+          const step = track.steps[stepIdx % track.steps.length];
+
+          if (step.pad) {
+            playStrings(step.pad, (track.stepMs * 4.1) / 1000, 0.042);
+          }
+          if (step.piano) {
+            for (let i = 0; i < step.piano.length; i++) {
+              playPiano(step.piano[i], i === 0 ? 0.13 : 0.082, i === 0 ? 1.85 : 1.45);
+            }
+          }
+          if (step.bell) {
+            playBell(step.bell, 0.056, 1.55);
+          }
+
+          stepIdx++;
+          timer = setTimeout(tick, track.stepMs);
+        }
+
+        function start() {
+          if (!ensureContext() || isPlaying) return;
+          isPlaying = true;
+          tick();
+          updatePlayerUI();
+        }
+
+        function pause() {
+          isPlaying = false;
+          if (timer) {
+            clearTimeout(timer);
+            timer = null;
+          }
+          updatePlayerUI();
+        }
+
+        function toggle() {
+          if (isPlaying) pause();
+          else start();
+        }
+
+        function switchTrack() {
+          trackIdx = (trackIdx + 1) % TRACKS.length;
+          stepIdx = 0;
+          if (timer) {
+            clearTimeout(timer);
+            timer = null;
+          }
+          if (!isPlaying) start();
+          else {
+            tick();
+            updatePlayerUI();
+          }
+          return TRACKS[trackIdx].name;
+        }
+
+        return {
+          start,
+          pause,
+          toggle,
+          switchTrack,
+          playSparkleChime,
+          isPlaying: () => isPlaying,
+          getTitle: () => TRACKS[trackIdx].name
+        };
+      })();
+
+      const vinylPlayerEl = document.getElementById('vinyl-player');
+      const vinylDiscEl = document.getElementById('vinyl-disc');
+      const trackTitleEl = document.getElementById('track-title');
+      const playerStatusEl = document.getElementById('player-status');
+      const playPauseBtn = document.getElementById('play-pause-btn');
+      const switchTrackBtn = document.getElementById('switch-track-btn');
+      const iconPlay = document.getElementById('icon-play');
+      const iconPause = document.getElementById('icon-pause');
+
+      function updatePlayerUI() {
+        const playing = MelodyEngine.isPlaying();
+        trackTitleEl.textContent = MelodyEngine.getTitle();
+        playerStatusEl.textContent = playing ? 'Đang Hòa Tấu' : 'Tạm Dừng';
+        vinylPlayerEl.classList.toggle('is-playing', playing);
+        vinylDiscEl.classList.toggle('is-spinning', playing);
+        iconPlay.classList.toggle('hidden', playing);
+        iconPause.classList.toggle('hidden', !playing);
+      }
+
+      playPauseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        MelodyEngine.toggle();
+      });
+
+      switchTrackBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const title = MelodyEngine.switchTrack();
+        showToast(`🎵 Đang phát: ${title}`);
+      });
+
+      /* =================================================================
+         2. TIỀN KẾT XUẤT 4 SPRITE 32x32px VÀO OFFSCREEN CANVAS
+            - Sprite 0: Trái tim ruby sáng
+            - Sprite 1: Trái tim vàng champagne sáng
+            - Sprite 2: Cánh hoa hồng phấn
+            - Sprite 3: Sao 4 cánh lấp lánh
+            (0% shadowBlur, vẽ bằng ctx.drawImage siêu tốc)
+      ================================================================= */
+      function makeSpriteCanvas() {
+        const c = document.createElement('canvas');
+        c.width = 32;
+        c.height = 32;
+        return c;
+      }
+
+      function createHeartSprite32(coreColor, glowColor) {
+        const c = makeSpriteCanvas();
+        const g = c.getContext('2d');
+        const mid = 16;
+
+        const rad = g.createRadialGradient(mid, mid, 2, mid, mid, 16);
+        rad.addColorStop(0, glowColor);
+        rad.addColorStop(0.55, 'rgba(255, 234, 168, 0.14)');
+        rad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        g.fillStyle = rad;
+        g.fillRect(0, 0, 32, 32);
+
+        const s = 11.5;
+        g.save();
+        g.translate(mid, mid + 1);
+        g.fillStyle = coreColor;
+        g.beginPath();
+        g.moveTo(0, s * 0.52);
+        g.bezierCurveTo(-s * 0.86, -s * 0.12, -s * 0.68, -s * 0.92, 0, -s * 0.34);
+        g.bezierCurveTo(s * 0.68, -s * 0.92, s * 0.86, -s * 0.12, 0, s * 0.52);
+        g.closePath();
+        g.fill();
+
+        g.fillStyle = 'rgba(255, 255, 255, 0.65)';
+        g.beginPath();
+        g.ellipse(-s * 0.26, -s * 0.24, s * 0.15, s * 0.09, -0.5, 0, Math.PI * 2);
+        g.fill();
+        g.restore();
+
+        return c;
+      }
+
+      function createPetalSprite32() {
+        const c = makeSpriteCanvas();
+        const g = c.getContext('2d');
+        const mid = 16;
+        const s = 10.5;
+        const grad = g.createLinearGradient(mid - s, mid - s, mid + s, mid + s);
+        grad.addColorStop(0, '#ffe3ea');
+        grad.addColorStop(1, '#fb7185');
+
+        g.save();
+        g.translate(mid, mid);
+        g.fillStyle = grad;
+        g.beginPath();
+        g.moveTo(0, -s);
+        g.bezierCurveTo(s * 0.92, -s * 0.42, s * 0.76, s * 0.58, 0, s);
+        g.bezierCurveTo(-s * 0.76, s * 0.58, -s * 0.92, -s * 0.42, 0, -s);
+        g.closePath();
+        g.fill();
+        g.restore();
+
+        return c;
+      }
+
+      function createStarSprite32() {
+        const c = makeSpriteCanvas();
+        const g = c.getContext('2d');
+        const mid = 16;
+
+        const rad = g.createRadialGradient(mid, mid, 1, mid, mid, 15);
+        rad.addColorStop(0, 'rgba(255, 246, 212, 0.62)');
+        rad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        g.fillStyle = rad;
+        g.fillRect(0, 0, 32, 32);
+
+        const rOut = 11;
+        const rIn = 2.4;
+        g.save();
+        g.translate(mid, mid);
+        g.fillStyle = '#fff9e0';
+        g.beginPath();
+        for (let i = 0; i < 4; i++) {
+          const a = (i * Math.PI) / 2;
+          g.lineTo(Math.cos(a) * rOut, Math.sin(a) * rOut);
+          g.lineTo(Math.cos(a + Math.PI / 4) * rIn, Math.sin(a + Math.PI / 4) * rIn);
+        }
+        g.closePath();
+        g.fill();
+        g.restore();
+
+        return c;
+      }
+
+      // Đúng 4 Offscreen Sprites 32x32px
+      const SPRITES = [
+        createHeartSprite32('#fb4c75', 'rgba(251, 76, 117, 0.58)'),  // 0: Trái tim ruby sáng
+        createHeartSprite32('#ffeaa8', 'rgba(255, 234, 168, 0.65)'), // 1: Trái tim vàng champagne sáng
+        createPetalSprite32(),                                        // 2: Cánh hoa hồng phấn
+        createStarSprite32()                                          // 3: Sao 4 cánh lấp lánh
+      ];
+
+      /* =================================================================
+         3. CANVAS ENGINE 60-120FPS:
+            - Khóa cứng dpr = 1, desynchronized: true
+            - Object Pooling cố định: 22 hạt nền + 60 hạt pháo hoa
+            - Delta-Time chuẩn hóa + Auto Pause khi tab ẩn
+            - Bộ đo FPS trực tiếp + Nút chuyển Hiệu ứng: Bật / Siêu Nhẹ
+      ================================================================= */
+      const canvas = document.getElementById('fx-canvas');
+      const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true }) || canvas.getContext('2d', { alpha: true });
+
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+      let isLiteMode = false;
+
+      const AMBIENT_POOL_SIZE = 22;
+      const BURST_POOL_SIZE = 60;
+
+      // Cấp phát sẵn Pool 22 hạt nền (Zero-Allocation trong vòng lặp)
+      const ambientPool = Array.from({ length: AMBIENT_POOL_SIZE }, () => ({
+        spriteIdx: 0,
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        size: 18,
+        phase: 0,
+        swaySpeed: 0,
+        swayAmp: 0,
+        rot: 0,
+        rotSpeed: 0,
+        alpha: 0.72
+      }));
+
+      // Cấp phát sẵn Pool 60 hạt pháo hoa & tương tác
+      const burstPool = Array.from({ length: BURST_POOL_SIZE }, () => ({
+        active: false,
+        spriteIdx: 0,
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        gravity: 140,
+        drag: 0.96,
+        size: 20,
+        rot: 0,
+        rotSpeed: 0,
+        life: 0,
+        decay: 0.78
+      }));
+      let burstCursor = 0;
+
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        // Khóa cứng dpr = 1 để tối ưu tốc độ vẽ tối đa 60-120FPS
+        canvas.width = width;
+        canvas.height = height;
+      }
+
+      function resetAmbient(p, randomY) {
+        const r = Math.random();
+        if (r < 0.34) {
+          p.spriteIdx = 0; // Trái tim ruby sáng
+          p.size = 18 + Math.random() * 14;
+          p.vy = -(16 + Math.random() * 24);
+          p.alpha = 0.52 + Math.random() * 0.36;
+        } else if (r < 0.62) {
+          p.spriteIdx = 1; // Trái tim vàng champagne sáng
+          p.size = 16 + Math.random() * 14;
+          p.vy = -(14 + Math.random() * 22);
+          p.alpha = 0.56 + Math.random() * 0.36;
+        } else if (r < 0.82) {
+          p.spriteIdx = 2; // Cánh hoa hồng phấn rơi nhẹ
+          p.size = 14 + Math.random() * 12;
+          p.vy = 24 + Math.random() * 28;
+          p.alpha = 0.58 + Math.random() * 0.34;
+        } else {
+          p.spriteIdx = 3; // Sao 4 cánh lấp lánh
+          p.size = 13 + Math.random() * 12;
+          p.vy = -(10 + Math.random() * 16);
+          p.alpha = 0.54 + Math.random() * 0.42;
+        }
+
+        p.x = Math.random() * width;
+        p.y = randomY ? Math.random() * height : (p.spriteIdx === 2 ? -24 : height + 24 + Math.random() * 20);
+        p.vx = (Math.random() - 0.5) * 12;
+        p.phase = Math.random() * Math.PI * 2;
+        p.swaySpeed = 0.75 + Math.random() * 0.95;
+        p.swayAmp = 12 + Math.random() * 20;
+        p.rot = Math.random() * Math.PI * 2;
+        p.rotSpeed = (Math.random() - 0.5) * 0.95;
+      }
+
+      function initAmbientPool() {
+        for (let i = 0; i < AMBIENT_POOL_SIZE; i++) {
+          resetAmbient(ambientPool[i], true);
+        }
+      }
+
+      function spawnBurst(spriteIdx, x, y, vx, vy, size, gravity, drag, decay) {
+        const b = burstPool[burstCursor];
+        burstCursor = (burstCursor + 1) % BURST_POOL_SIZE;
+
+        b.active = true;
+        b.spriteIdx = spriteIdx;
+        b.x = x;
+        b.y = y;
+        b.vx = vx;
+        b.vy = vy;
+        b.size = size;
+        b.gravity = gravity;
+        b.drag = drag;
+        b.rot = Math.random() * Math.PI * 2;
+        b.rotSpeed = (Math.random() - 0.5) * 3.4;
+        b.life = 1;
+        b.decay = decay;
+      }
+
+      // Pháo hoa hình trái tim toán học (dùng vòng 20 hạt gọn mượt trong pool 60)
+      function burstHeartFirework(cx, cy, scale = 13.5, goldDominant = false) {
+        const pts = isLiteMode ? 14 : 20;
+        for (let i = 0; i < pts; i++) {
+          const t = (Math.PI * 2 * i) / pts;
+          const hx = 16 * Math.pow(Math.sin(t), 3);
+          const hy = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+          const jitter = 0.93 + Math.random() * 0.14;
+          const spriteIdx = (i % 4 === 0) ? 3 : (goldDominant ? 1 : (i % 2 === 0 ? 0 : 1));
+
+          spawnBurst(
+            spriteIdx,
+            cx,
+            cy,
+            hx * scale * jitter,
+            hy * scale * jitter,
+            spriteIdx === 3 ? 16 : 21,
+            115,
+            0.955,
+            0.72 + Math.random() * 0.28
+          );
+        }
+      }
+
+      // Bung chùm trái tim / hoa / sao khi chạm màn hình hoặc bấm nút
+      function burstSparkles(x, y, count = 10, petalsMode = false) {
+        const finalCount = isLiteMode ? Math.max(6, Math.floor(count * 0.65)) : count;
+        for (let i = 0; i < finalCount; i++) {
+          const angle = -Math.PI * 0.5 + (Math.random() - 0.5) * 2.6;
+          const speed = 110 + Math.random() * 195;
+          let spriteIdx;
+          if (petalsMode) {
+            spriteIdx = i % 3 === 0 ? 1 : 2;
+          } else {
+            const r = Math.random();
+            spriteIdx = r < 0.38 ? 0 : (r < 0.72 ? 1 : 3);
+          }
+
+          spawnBurst(
+            spriteIdx,
+            x + (Math.random() - 0.5) * 10,
+            y + (Math.random() - 0.5) * 10,
+            Math.cos(angle) * speed,
+            Math.sin(angle) * speed - 34,
+            16 + Math.random() * 10,
+            190,
+            0.972,
+            0.76 + Math.random() * 0.36
+          );
+        }
+      }
+
+      // Bộ đo FPS trực tiếp cập nhật mỗi 500ms
+      const fpsReadoutEl = document.getElementById('fps-readout');
+      const fxModeBtn = document.getElementById('fx-mode-btn');
+      let rafId = null;
+      let lastTime = 0;
+      let fpsFrames = 0;
+      let fpsStamp = 0;
+
+      fxModeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isLiteMode = !isLiteMode;
+        document.body.classList.toggle('lite-fx', isLiteMode);
+        fxModeBtn.textContent = isLiteMode ? '✨ Hiệu ứng: Siêu Nhẹ' : '✨ Hiệu ứng: Bật';
+        showToast(isLiteMode ? '⚡ Đã chuyển sang chế độ Siêu Nhẹ tối ưu tối đa FPS' : '✨ Đã bật đầy đủ hiệu ứng lấp lánh 60-120FPS');
+      });
+
+      function renderFrame(now) {
+        if (document.hidden) {
+          rafId = null;
+          return;
+        }
+
+        if (!lastTime) {
+          lastTime = now;
+          fpsStamp = now;
+        }
+
+        const dt = Math.min((now - lastTime) * 0.001, 0.05);
+        lastTime = now;
+
+        // Đo FPS mượt, chỉ cập nhật DOM 2 lần/giây
+        fpsFrames++;
+        const fpsElapsed = now - fpsStamp;
+        if (fpsElapsed >= 500) {
+          const currentFps = Math.min(240, Math.round((fpsFrames * 1000) / fpsElapsed));
+          fpsReadoutEl.textContent = `⚡ ${currentFps} FPS`;
+          fpsFrames = 0;
+          fpsStamp = now;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        // 1. Vẽ hạt nền (22 hạt ở chế độ Bật, 8 hạt ở chế độ Siêu Nhẹ)
+        const ambientLimit = isLiteMode ? 8 : AMBIENT_POOL_SIZE;
+        for (let i = 0; i < ambientLimit; i++) {
+          const p = ambientPool[i];
+          p.phase += p.swaySpeed * dt;
+          p.x += (p.vx + Math.sin(p.phase) * p.swayAmp) * dt;
+          p.y += p.vy * dt;
+          p.rot += p.rotSpeed * dt;
+
+          if ((p.spriteIdx === 2 && p.y > height + 28) || (p.spriteIdx !== 2 && p.y < -28)) {
+            resetAmbient(p, false);
+            continue;
+          }
+          if (p.x < -28) p.x = width + 22;
+          else if (p.x > width + 28) p.x = -22;
+
+          ctx.globalAlpha = p.spriteIdx === 3
+            ? p.alpha * (0.42 + 0.58 * Math.abs(Math.sin(p.phase * 1.9)))
+            : p.alpha;
+
+          const half = p.size * 0.5;
+          if (p.spriteIdx === 3) {
+            // Sao 4 cánh vẽ thẳng không cần save/restore
+            ctx.drawImage(SPRITES[3], p.x - half, p.y - half, p.size, p.size);
+          } else {
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot * (p.spriteIdx === 2 ? 1 : 0.24));
+            ctx.drawImage(SPRITES[p.spriteIdx], -half, -half, p.size, p.size);
+            ctx.restore();
+          }
+        }
+
+        // 2. Vẽ hạt pháo hoa & tương tác từ Pool 60 hạt
+        const dt60 = dt * 60;
+        for (let i = 0; i < BURST_POOL_SIZE; i++) {
+          const b = burstPool[i];
+          if (!b.active) continue;
+
+          const dragFactor = Math.pow(b.drag, dt60);
+          b.vx *= dragFactor;
+          b.vy = b.vy * dragFactor + b.gravity * dt;
+          b.x += b.vx * dt;
+          b.y += b.vy * dt;
+          b.rot += b.rotSpeed * dt;
+          b.life -= b.decay * dt;
+
+          if (b.life <= 0) {
+            b.active = false;
+            continue;
+          }
+
+          const s = b.size * (0.58 + 0.42 * b.life);
+          const half = s * 0.5;
+          ctx.globalAlpha = b.life > 0.85 ? 1 : b.life * 1.15;
+          ctx.save();
+          ctx.translate(b.x, b.y);
+          ctx.rotate(b.rot);
+          ctx.drawImage(SPRITES[b.spriteIdx], -half, -half, s, s);
+          ctx.restore();
+        }
+
+        ctx.globalAlpha = 1;
+        rafId = requestAnimationFrame(renderFrame);
+      }
+
+      function startLoop() {
+        if (!rafId && !document.hidden) {
+          lastTime = 0;
+          fpsFrames = 0;
+          rafId = requestAnimationFrame(renderFrame);
+        }
+      }
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
+        } else {
+          startLoop();
+        }
+      });
+
+      /* =================================================================
+         4. POOL 4 THẺ DOM CÂU CHÚC NGẮN BAY LÊN CHO CÔ THANH HẢO
+      ================================================================= */
+      const TAP_WISHES = [
+        'Kính chúc Cô Thanh Hảo luôn an nhiên ✨',
+        'Tri ân Cô Lữ Nguyễn Thanh Hảo 💖',
+        'Chúc Cô ngày 20/11 thật rạng rỡ 💐',
+        'Mãi biết ơn sự tận tâm của Cô 🕯️',
+        'Bình an & Hạnh phúc gửi đến Cô 🌸',
+        'Kính mến Cô — Học trò Lê Hữu Nam ❤️'
+      ];
+      let wishTextIdx = 0;
+
+      const WISH_POOL_SIZE = 4;
+      const wishPool = Array.from({ length: WISH_POOL_SIZE }, () => {
+        const el = document.createElement('span');
+        el.className = 'tap-wish-chip';
+        el.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(el);
+        return { el, timer: null };
+      });
+      let wishSlotIdx = 0;
+
+      function spawnFloatingWish(x, y) {
+        const slot = wishPool[wishSlotIdx];
+        wishSlotIdx = (wishSlotIdx + 1) % WISH_POOL_SIZE;
+
+        const safeX = Math.max(130, Math.min(width - 130, x));
+        const safeY = Math.max(72, y - 10);
+
+        if (slot.timer) clearTimeout(slot.timer);
+        slot.el.classList.remove('is-flying');
+        slot.el.textContent = TAP_WISHES[wishTextIdx % TAP_WISHES.length];
+        wishTextIdx++;
+
+        slot.el.style.setProperty('--wx', `${safeX}px`);
+        slot.el.style.setProperty('--wy', `${safeY}px`);
+        void slot.el.offsetWidth;
+        slot.el.classList.add('is-flying');
+
+        slot.timer = setTimeout(() => {
+          slot.el.classList.remove('is-flying');
+        }, 1400);
+      }
+
+      /* =================================================================
+         5. TYPEWRITER CÂU ĐỀ TỪ MỚI
+      ================================================================= */
+      const epigraphTextEl = document.getElementById('epigraph-text');
+      const epigraphCaretEl = document.getElementById('epigraph-caret');
+      const EPIGRAPH = '“Có những bài học ghi trên trang giấy, và có những ánh sáng dịu dàng Cô gieo vào trái tim để theo học trò đi suốt cuộc đời.”';
+      let typeTimer = null;
+
+      function runEpigraphTypewriter() {
+        if (typeTimer) clearTimeout(typeTimer);
+        let idx = 0;
+        epigraphTextEl.textContent = '';
+        epigraphCaretEl.classList.remove('is-done');
+
+        const step = () => {
+          if (idx < EPIGRAPH.length) {
+            epigraphTextEl.textContent += EPIGRAPH.charAt(idx);
+            idx++;
+            typeTimer = setTimeout(step, 34);
+          } else {
+            typeTimer = setTimeout(() => {
+              epigraphCaretEl.classList.add('is-done');
+            }, 1100);
+          }
+        };
+        typeTimer = setTimeout(step, 240);
+      }
+
+      /* =================================================================
+         6. TOAST THÔNG BÁO VIỀN SÁNG
+      ================================================================= */
+      const toastEl = document.getElementById('luminous-toast');
+      let toastTimer = null;
+
+      function showToast(message, duration = 3500) {
+        toastEl.textContent = message;
+        toastEl.classList.remove('toast-hide');
+        toastEl.classList.add('toast-show');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastEl.classList.remove('toast-show');
+          toastEl.classList.add('toast-hide');
+        }, duration);
+      }
+
+      /* =================================================================
+         7. MỞ PHONG THƯ 3D & XEM LẠI PHONG THƯ
+      ================================================================= */
+      const stageIntro = document.getElementById('stage-intro');
+      const stageMain = document.getElementById('stage-main');
+      const envelopeTrigger = document.getElementById('envelope-trigger');
+      const envelopeHint = document.getElementById('envelope-hint');
+      const replayEnvelopeBtn = document.getElementById('replay-envelope-btn');
+      let envelopeOpened = false;
+
+      function openEnvelope() {
+        if (envelopeOpened) return;
+        envelopeOpened = true;
+
+        envelopeTrigger.classList.add('opened');
+        envelopeHint.textContent = 'Đang mở thiệp tri ân kính tặng Cô Lữ Nguyễn Thanh Hảo... ✨';
+
+        const rect = envelopeTrigger.getBoundingClientRect();
+        const cx = rect.left + rect.width * 0.5;
+        const cy = rect.top + rect.height * 0.5;
+        const fwScale = width < 640 ? 11 : 14.5;
+
+        burstHeartFirework(cx, cy - 8, fwScale, true);
+        setTimeout(() => burstHeartFirework(width * 0.28, height * 0.28, fwScale, false), 220);
+        setTimeout(() => burstHeartFirework(width * 0.72, height * 0.28, fwScale, true), 420);
+
+        MelodyEngine.playSparkleChime(true);
+        setTimeout(() => MelodyEngine.start(), 460);
+
+        setTimeout(() => {
+          stageIntro.classList.add('is-hidden');
+          stageMain.classList.remove('hidden');
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              stageMain.classList.add('is-visible');
+              runEpigraphTypewriter();
+            });
+          });
+
+          setTimeout(() => {
+            stageIntro.style.display = 'none';
+          }, 680);
+        }, 880);
+      }
+
+      function replayEnvelope() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        stageMain.classList.remove('is-visible');
+
+        setTimeout(() => {
+          stageMain.classList.add('hidden');
+          envelopeOpened = false;
+          envelopeTrigger.classList.remove('opened');
+          envelopeHint.innerHTML = '<span>Chạm vào dấu sáp 20/11 để mở thiệp &amp; thưởng thức hòa tấu</span> <span class="text-champagne-bright text-lg">✨</span>';
+          stageIntro.style.display = 'flex';
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              stageIntro.classList.remove('is-hidden');
+            });
+          });
+        }, 360);
+      }
+
+      envelopeTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openEnvelope();
+      });
+
+      envelopeTrigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openEnvelope();
+        }
+      });
+
+      replayEnvelopeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        replayEnvelope();
+      });
+
+      /* =================================================================
+         8. BỐN THẺ QUÀ TẶNG LẬT 3D ("BỐN NGỌN NẾN TRI ÂN")
+      ================================================================= */
+      const candleCards = document.querySelectorAll('.candle-card-scene');
+      const openedCardsCountEl = document.getElementById('opened-cards-count');
+      const openedSet = new Set();
+      let celebratedAll = false;
+
+      candleCards.forEach((card) => {
+        function handleFlip(e) {
+          if (e) e.stopPropagation();
+          const flipped = card.classList.toggle('is-flipped');
+          card.setAttribute('aria-pressed', String(flipped));
+
+          const rect = card.getBoundingClientRect();
+          burstSparkles(rect.left + rect.width * 0.5, rect.top + rect.height * 0.5, 10, false);
+
+          if (flipped) {
+            MelodyEngine.playSparkleChime(false);
+            openedSet.add(card.dataset.cardId);
+            openedCardsCountEl.textContent = `${openedSet.size} / 4`;
+
+            if (openedSet.size === 4 && !celebratedAll) {
+              celebratedAll = true;
+              showToast('👑 Cô đã thắp sáng đủ 4/4 Ngọn Nến Tri Ân — Kính chúc Cô Lữ Nguyễn Thanh Hảo ngày 20/11 thật rạng rỡ & viên mãn! 🎆', 5000);
+              MelodyEngine.playSparkleChime(true);
+
+              const sc = width < 640 ? 11.5 : 15;
+              burstHeartFirework(width * 0.24, height * 0.28, sc, true);
+              setTimeout(() => burstHeartFirework(width * 0.50, height * 0.22, sc, true), 220);
+              setTimeout(() => burstHeartFirework(width * 0.76, height * 0.28, sc, true), 440);
+            }
+          }
+        }
+
+        card.addEventListener('click', handleFlip);
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleFlip(e);
+          }
+        });
+      });
+
+      /* =================================================================
+         9. NÚT PHÁO HOA TRÁI TIM, GỬI NGÀN ĐÓA HOA & CHẠM MÀN HÌNH
+      ================================================================= */
+      const fireworkHeartBtn = document.getElementById('firework-heart-btn');
+      const giftFlowersBtn = document.getElementById('gift-flowers-btn');
+      const flowerCountEl = document.getElementById('flower-count');
+      const heartCountEl = document.getElementById('heart-count');
+
+      let flowerTotal = 0;
+      let heartTotal = 0;
+      let fwMsgIdx = 0;
+
+      const FW_WISHES = [
+        '🎆 Pháo hoa trái tim vàng sáng kính gửi Cô Lữ Nguyễn Thanh Hảo!',
+        '✨ Kính chúc Cô Thanh Hảo ngày 20/11 ngập tràn niềm vui & bình an!',
+        '💖 Cảm ơn Cô đã gieo ánh sáng dịu dàng vào hành trình trưởng thành của học trò!',
+        '👑 Chúc Cô luôn mạnh khỏe, thanh lịch và mãi hạnh phúc với nghề giáo cao quý!'
+      ];
+
+      fireworkHeartBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        heartTotal += 10;
+        heartCountEl.textContent = heartTotal;
+
+        const sc = width < 640 ? 11.5 : 15;
+        burstHeartFirework(width * 0.50, height * 0.24, sc, true);
+        setTimeout(() => burstHeartFirework(width * 0.25, height * 0.32, sc, false), 220);
+        setTimeout(() => burstHeartFirework(width * 0.75, height * 0.32, sc, true), 440);
+
+        MelodyEngine.playSparkleChime(true);
+        showToast(FW_WISHES[fwMsgIdx % FW_WISHES.length]);
+        fwMsgIdx++;
+      });
+
+      giftFlowersBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        flowerTotal += 1;
+        heartTotal += 3;
+        flowerCountEl.textContent = flowerTotal;
+        heartCountEl.textContent = heartTotal;
+
+        const rect = giftFlowersBtn.getBoundingClientRect();
+        burstSparkles(rect.left + rect.width * 0.5, rect.top, 16, true);
+        burstSparkles(width * 0.24, height * 0.62, 10, true);
+        burstSparkles(width * 0.76, height * 0.62, 10, true);
+
+        MelodyEngine.playSparkleChime(false);
+        showToast(`💐 Đã gửi tặng Cô Lữ Nguyễn Thanh Hảo bó hoa tươi thắm thứ ${flowerTotal}!`);
+      });
+
+      document.addEventListener('pointerdown', (e) => {
+        if (e.target.closest('#envelope-trigger, #firework-heart-btn, #gift-flowers-btn, #replay-envelope-btn, #vinyl-player, #perf-hud, .candle-card-scene')) {
+          return;
+        }
+        burstSparkles(e.clientX, e.clientY, 10, false);
+        spawnFloatingWish(e.clientX, e.clientY);
+      }, { passive: true });
+
+      /* =================================================================
+         10. KHỞI TẠO HỆ THỐNG KHI TRANG TẢI XONG
+      ================================================================= */
+      let resizeTimer = null;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          resizeCanvas();
+          initAmbientPool();
+        }, 120);
+      }, { passive: true });
+
+      window.addEventListener('load', () => {
+        resizeCanvas();
+        initAmbientPool();
+        updatePlayerUI();
+        startLoop();
+      });
+    })();
+  </script>
+</body>
+</html>
